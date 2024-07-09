@@ -1,0 +1,140 @@
+{% extends "app/base.html" %}
+{% block title %}Home{% endblock title %}
+{% block body %}
+<div class="container containerform">
+    <form action="https://www.google.com/search" method="get" class="search-bar">
+        <input type="text" name="q" placeholder="Search Me on Google...">
+        <input type="submit" value="Search">
+    </form>
+</div>
+
+<form class="form" method="post">
+    {% csrf_token %}
+    <h2
+        style="text-align: center; font-weight: bold; font-size: 32px; margin-bottom: 20px; color:red;text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);">
+        "Hire Me Right" "Now"</h2>
+    <div class="form-group row">
+        <label for="name" class="col-sm-2 col-form-label"><strong>Role</strong></label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="role" name="role" placeholder="Designation" required>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="KRA" class="col-sm-2 col-form-label"><strong>KRA's</strong></label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="KRA" name="KRA" placeholder="KRA's" required>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="phone" class="col-sm-2 col-form-label"><strong>Phone</strong></label>
+        <div class="col-sm-10">
+            <input type="tel" class="form-control" id="phone" name="phone" pattern="[0-9]{5}[0-9]{5}"
+                placeholder="Enter your phone number" required>
+        </div>
+    </div>
+    <div class="form-group row">
+        <label for="salary" class="col-sm-2 col-form-label"><strong>Salary</strong></label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="salary" name="salary" placeholder="Offered Salary" required>
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="offset-sm-2 col-sm-10">
+            <button type="submit" class="btn btn-danger"><strong>Hire Now</strong></button>
+        </div>
+    </div>
+</form>
+
+<div class="container">
+    <div class="left-div">
+        <h1>Cover Letter</h1>
+        <p>I hold extensive experience in Python, Django, Flask, HTML, CSS, Bootstrap,
+            Hosting & Microservices which I have utilized to develop and maintain several
+            web applications. Additionally, I have a solid understanding of microservices
+            architecture and have implemented various microservices in my projects. My
+            expertise also includes working with SQL databases, ensuring that data is
+            efficiently managed and securely stored.</p>
+        <p>
+            One of my significant accomplishments is hosting a live project based on
+            Django, where I was responsible for the full development lifecycle, from initial
+            design to deployment. This project involved creating a responsive web
+            application with a user-friendly interface, leveraging Bootstrap for styling and
+            SQL for database management. You can view the live project at
+            [selfhelpclubb.com]
+        </p>
+        <h2>Here is a summary of my key skills:</h2>
+        <ul>
+            <li>
+                <strong>Python:</strong> Proficient in writing clean, efficient, and maintainable code.
+            </li>
+            <li>
+                <strong>Django:</strong> Extensive experience in building robust web applications and
+                RESTful APIs.
+            </li>
+            <li>
+                <strong>Flask:</strong> Skilled in developing lightweight applications and microservices.
+            </li>
+            <li>
+                <strong> HTML & CSS:</strong> Strong ability to create and style web pages with responsive
+                design principles.
+            </li>
+            <li>
+                <strong>Bootstrap:</strong> Expertise in utilizing Bootstrap for developing responsive and
+                mobile-first web applications.
+            </li>
+            <li>
+                <strong>Hosting:</strong> Hands-on experience in deploying and managing web
+                applications on various hosting platforms.
+            </li>
+            <li>
+                <strong>Microservices:</strong> Knowledge of designing and implementing microservices
+                for scalable applications.
+            </li>
+            <li>
+                <strong>SQL Databases Using ORM</strong>: Proficient in writing complex queries, optimizing database
+                performance, and ensuring data integrity.
+            </li>
+        </ul>
+        <p>
+            I am confident that my technical expertise, combined with my commitment
+            to delivering high-quality solutions, would make me a valuable asset to your
+            team. I am eager to bring my skills to the organization and contribute to the
+            success of your projects.
+        </p>
+
+        <p>
+            Thank you for considering my application. I look forward to the opportunity to
+            discuss how my background, and skills will be beneficial to your team. I am
+            available at your earliest convenience for an interview.
+        </p>
+
+    </div>
+
+</div>
+<div class="container">
+    <h1>Check my Offer Letters</h1>
+</div>
+
+<div class="container">
+    <table class="table table-dark">
+        <thead>
+            <tr>
+                <th>Designation</th>
+                <th>KRA's</th>
+                <th>Phone</th>
+                <th>Salary</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in data %}
+            <tr class="table-active">
+                <td>{{item.role}}</td>
+                <td>{{item.KRA}}</td>
+                <td>{{item.salary}}</td>
+                <td>{{item.phone}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+{% endblock body %}
